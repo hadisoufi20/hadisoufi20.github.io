@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ZVAKTHOR — One-Page Summary</title>
+<style>
+  @page{size:A4;margin:12mm 13mm}
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font:10.6px/1.42 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:#16202b;background:#fff;
+  }
+  .sheet{max-width:184mm;margin:0 auto;padding:14px 4px 0}
+  h1{font-size:21px;line-height:1.14;margin:0 0 5px;letter-spacing:-.02em}
+  .sub{font-size:11.4px;color:#3d4b5c;margin:0 0 9px;max-width:170mm}
+  .rule{height:2px;background:#0f2a44;margin:9px 0 11px}
+  h2{font-size:8.6px;letter-spacing:.14em;text-transform:uppercase;color:#0f4c81;margin:0 0 6px;font-weight:800}
+  p{margin:0 0 7px}
+  .cols{display:flex;gap:12px}
+  .cols>div{flex:1}
+  ul{margin:0;padding-left:13px}
+  li{margin:0 0 3.4px}
+  .layers{display:flex;gap:7px;margin-bottom:9px}
+  .layer{flex:1;border:1px solid #cfd8e2;border-radius:5px;padding:7px 8px;background:#f7fafc}
+  .layer b{display:block;font-size:10.2px;margin-bottom:2px}
+  .layer .n{font-size:7.6px;letter-spacing:.12em;text-transform:uppercase;color:#64748b;font-weight:800}
+  .layer.core{background:#eef5fd;border-color:#8fb6dd}
+  .kv{display:flex;flex-wrap:wrap;gap:5px 14px;margin:0 0 8px}
+  .kv span{font-size:10px}
+  .kv b{color:#0f2a44}
+  table{width:100%;border-collapse:collapse;font-size:9.9px;margin:0 0 8px}
+  td{padding:3.6px 0;border-bottom:1px solid #e2e8f0;vertical-align:top}
+  td:first-child{width:46px;color:#64748b;font-weight:800;font-size:8.2px;letter-spacing:.06em;text-transform:uppercase;padding-top:5px}
+  a{color:#0f4c81;text-decoration:none}
+  .box{border:1px solid #cfd8e2;border-left:3px solid #0f4c81;background:#f7fafc;border-radius:5px;padding:8px 10px;margin:0 0 9px;font-size:10.4px}
+  .foot{border-top:1px solid #d8e0e8;margin-top:9px;padding-top:7px;font-size:8.9px;color:#5b6b7d}
+  .ids{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:9.9px}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <h1>ZVAKTHOR — Deterministic Control for Autonomous Trading Agents</h1>
+  <p class="sub">
+    An algorithmic execution platform for global financial markets that separates <b>intelligence</b> from <b>control</b>:
+    specialist agents analyse markets independently, while an isolated Rust core validates every decision for risk and
+    execution eligibility before any order reaches the market. Every decision — accepted or rejected — is recorded and replayable.
+  </p>
+  <div class="kv">
+    <span><b>Non-custodial</b> by design</span>
+    <span><b>Deterministic</b> kill-switch</span>
+    <span><b>Boundary:</b> Python intelligence / Rust governance</span>
+  </div>
+  <div class="rule"></div>
+
+  <h2>Architecture — three layers, one enforced boundary</h2>
+  <div class="layers">
+    <div class="layer"><span class="n">Layer 1</span><b>Discovery</b>Signal generation and candidate search, with a search objective designed not to converge on crowded alpha.</div>
+    <div class="layer"><span class="n">Layer 2</span><b>Reasoning</b>Specialist agents analyse markets independently and produce decisions with supporting context and constraints.</div>
+    <div class="layer core"><span class="n">Layer 3</span><b>Execution Control</b>An isolated Rust core validates risk and execution eligibility. Nothing reaches the market unvalidated.</div>
+  </div>
+
+  <div class="cols">
+    <div>
+      <h2>What the architecture enforces</h2>
+      <ul>
+        <li><b>No unvalidated order</b> — validation is a precondition of execution, not a post-trade check.</li>
+        <li><b>Full decision lineage</b> — accepted and rejected decisions are both recorded and replayable.</li>
+        <li><b>Bounded authority</b> — explicit scope, validity and revocation, enforced at the authorisation boundary.</li>
+        <li><b>Reproducibility</b> — a decision is reproducible only from a versioned execution context.</li>
+        <li><b>Failure containment</b> — no valid-looking partial state; committed state survives process or node failure.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Custody, status, and the layer that decides outcomes</h2>
+      <div class="box">
+        <b>Non-custodial by design.</b> The software is licensed and run by clients on their own broker accounts.
+        Capital stays in the client's name, and the system never takes discretionary control.
+      </div>
+      <p><b>Status.</b> Core architecture and the first agent group are validated end to end in a demo environment.
+      Remaining agents activate as their data infrastructure is funded. No live performance figures are published.</p>
+      <p><b>Research premise.</b> Production evidence indicates agent behaviour is driven by interface and execution design,
+      not model reasoning quality alone — the Operating-Layer Dominance Hypothesis. <b>IMPERION</b> applies the same
+      governance discipline to automating AI system architecture decisions.</p>
+    </div>
+  </div>
+
+  <h2>Research program — four SSRN working papers</h2>
+  <table>
+    <tr><td>Paper 1</td><td>The Operating-Layer Dominance Hypothesis: Why Agentic Trading Alpha Is an Interface Problem, Not a Model Problem — <a href="https://ssrn.com/abstract=7472064">ssrn.com/abstract=7472064</a></td></tr>
+    <tr><td>Paper 2</td><td>From Backtest to Deployment: A Staged-Capital Protocol for Evaluating Agentic Trading Systems — <a href="https://ssrn.com/abstract=7475338">ssrn.com/abstract=7475338</a></td></tr>
+    <tr><td>Paper 3</td><td>A Three-Layer Reference Architecture for Deterministic Control in Agentic Trading Systems — <a href="https://ssrn.com/abstract=7488978">ssrn.com/abstract=7488978</a></td></tr>
+    <tr><td>Paper 4</td><td>Why Discovery Layers Guarantee Crowded Alpha: A Design Case for Quality-Diversity Search in Agentic Trading Systems — <a href="https://ssrn.com/abstract=7488920">ssrn.com/abstract=7488920</a></td></tr>
+  </table>
+
+  <h2>Verifiable identity</h2>
+  <div class="ids">
+    <span>ORCID iD: <a href="https://orcid.org/0009-0009-4656-5983"><b>0009-0009-4656-5983</b></a></span>
+    <span>SSRN author page: <a href="https://ssrn.com/author=13197688">ssrn.com/author=13197688</a></span>
+    <span>Amazon author page: <a href="https://www.amazon.com/stores/author/B0GQ66415M">amazon.com/stores/author/B0GQ66415M</a></span>
+    <span>Open-source reference: <a href="https://github.com/hadisoufi20/NexusQuant">github.com/hadisoufi20/NexusQuant</a></span>
+  </div>
+
+  <div class="foot">
+    Hadi Soufi — Founder, ZVAKTHOR · Istanbul, Türkiye · <a href="https://www.linkedin.com/in/hadi-soufi-463170266">linkedin.com/in/hadi-soufi-463170266</a><br>
+    This document describes system architecture and status. It is not an offer of securities, an investment recommendation,
+    or a performance claim. Trading systems carry risk of loss.
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZVAKTHOR — Deterministic Control for Autonomous Trading Agents</title>
+<meta name="description" content="ZVAKTHOR separates intelligence from control in autonomous trading systems. Specialist agents analyse markets; an isolated Rust core validates every decision before it can reach the market. Non-custodial by design.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ZVAKTHOR">
+<meta property="og:title" content="ZVAKTHOR — Deterministic Control for Autonomous Trading Agents">
+<meta property="og:description" content="Separating intelligence from control: specialist agents analyse markets, an isolated Rust core validates every decision before it can reach the market, and every decision is recorded and replayable. Four SSRN research papers and a verifiable ORCID record.">
+<meta property="og:url" content="https://hadisoufi20.github.io/">
+<meta property="og:image" content="https://hadisoufi20.github.io/og-card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ZVAKTHOR — Deterministic Control for Autonomous Trading Agents">
+<meta name="twitter:description" content="Specialist agents analyse markets; an isolated Rust core validates every decision before it can reach the market. Non-custodial by design.">
+<meta name="twitter:image" content="https://hadisoufi20.github.io/og-card.png">
+<link rel="canonical" href="https://hadisoufi20.github.io/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="Hadi Soufi">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://hadisoufi20.github.io/#person","name":"Hadi Soufi","jobTitle":"Founder, ZVAKTHOR","description":"AI systems architect specialising in deterministic control architectures for autonomous and multi-agent systems.","url":"https://hadisoufi20.github.io/","sameAs":["https://orcid.org/0009-0009-4656-5983","https://ssrn.com/author=13197688","https://www.linkedin.com/in/hadi-soufi-463170266","https://github.com/hadisoufi20","https://www.amazon.com/stores/author/B0GQ66415M"]},{"@type":"Organization","@id":"https://hadisoufi20.github.io/#zvakthor","name":"ZVAKTHOR","description":"Algorithmic execution platform that separates intelligence from control: specialist agents analyse markets while an isolated Rust core validates every decision for risk and execution eligibility before any order reaches the market.","url":"https://hadisoufi20.github.io/","founder":{"@id":"https://hadisoufi20.github.io/#person"},"knowsAbout":["AI systems architecture","multi-agent systems","deterministic execution control","algorithmic trading infrastructure"]}]}</script>
+<style>
+  :root{
+    --bg:#0a0d12;
+    --panel:#11161d;
+    --panel2:#151b24;
+    --line:#232c38;
+    --ink:#e8edf4;
+    --muted:#9aa7b8;
+    --accent:#4da3ff;
+    --accent2:#31d0aa;
+    --warn:#ffb454;
+    --maxw:1040px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  header.hero{
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(1100px 380px at 50% -180px, rgba(77,163,255,.18), transparent 70%),
+      linear-gradient(180deg,#0d1219,#0a0d12);
+    padding:64px 0 46px;
+  }
+  .kicker{
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent2);font-weight:700;margin:0 0 14px;
+  }
+  h1{
+    font-size:40px;line-height:1.15;margin:0 0 16px;letter-spacing:-.02em;font-weight:750;
+  }
+  h1 .thin{color:var(--muted);font-weight:400}
+  .lede{font-size:19px;color:#c7d2e0;margin:0 0 22px;max-width:820px}
+  .lede strong{color:#fff}
+  .meta{font-size:13.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 18px}
+  .meta span{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--accent2);display:inline-block}
+
+  section{padding:44px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 22px;font-weight:700}
+  h3{font-size:18px;margin:0 0 8px;letter-spacing:-.01em}
+  p{margin:0 0 14px;color:#c2cddb}
+  p.tight{margin-bottom:8px}
+
+  .grid{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;
+  }
+  .card .num{
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;
+    margin:0 0 10px;
+  }
+  .card h3{color:#fff}
+  .card p{font-size:14.5px;margin:0;color:#aab7c7}
+
+  ul.checks{list-style:none;margin:0;padding:0}
+  ul.checks li{
+    position:relative;padding:10px 0 10px 30px;border-bottom:1px dashed var(--line);color:#c2cddb;font-size:15px;
+  }
+  ul.checks li:last-child{border-bottom:none}
+  ul.checks li:before{
+    content:"";position:absolute;left:2px;top:17px;width:9px;height:9px;border-radius:2px;
+    background:var(--accent2);box-shadow:0 0 0 3px rgba(49,208,170,.14);
+  }
+
+  .flow{display:flex;align-items:stretch;gap:0;margin:6px 0 0;flex-wrap:wrap}
+  .step{
+    flex:1 1 200px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:18px;position:relative;margin:6px;
+  }
+  .step .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .step h3{font-size:16px;margin:6px 0 6px;color:#fff}
+  .step p{font-size:13.5px;margin:0;color:#a7b4c4}
+  .step.core{border-color:rgba(77,163,255,.5);background:linear-gradient(180deg,rgba(77,163,255,.10),rgba(77,163,255,.03))}
+
+  .claim{
+    background:var(--panel2);border:1px solid var(--line);border-left:3px solid var(--warn);
+    border-radius:10px;padding:18px 20px;color:#cbd5e2;font-size:15px;
+  }
+  .claim strong{color:#fff}
+
+  table.papers{width:100%;border-collapse:collapse;font-size:14.5px}
+  table.papers td{padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  table.papers td:first-child{padding-left:0;width:74px;color:var(--muted);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;white-space:nowrap}
+  table.papers tr:last-child td{border-bottom:none}
+  table.papers .t{color:#e9eef5;display:block;margin-bottom:3px}
+
+  .ids{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .id{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .id .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:7px}
+  .id .val{font-size:14px;word-break:break-word;color:#dbe4ee}
+  .id .val code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;color:var(--accent2)}
+
+  footer{padding:34px 0 54px;color:var(--muted);font-size:13.5px}
+  .foot-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .note{font-size:12.5px;color:#7d8b9c;margin-top:18px;max-width:820px}
+
+  @media (max-width:760px){
+    h1{font-size:30px}
+    .g3,.g2{grid-template-columns:1fr}
+    .lede{font-size:17px}
+    header.hero{padding:44px 0 34px}
+  }
+  @media print{
+    body{background:#fff;color:#111}
+    header.hero{background:#fff;border-bottom:1px solid #ddd}
+    .card,.step,.id,.claim{background:#fff;border-color:#ddd}
+    h1,h2,h3,.card h3,.step h3,.claim strong{color:#111}
+    p,li,.card p,.step p,.id .val{color:#222}
+    section{page-break-inside:avoid}
+    a{color:#0b5cad}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">ZVAKTHOR &nbsp;·&nbsp; Agentic Trading Infrastructure</p>
+    <h1>Separating intelligence from control in autonomous trading systems.</h1>
+    <p class="lede">
+      ZVAKTHOR is an algorithmic execution platform for global financial markets. Specialist agents analyse markets
+      independently, while an <strong>isolated Rust core</strong> validates every decision for risk and execution
+      eligibility <strong>before any order reaches the market</strong>. Every decision — accepted or rejected — is
+      recorded and replayable.
+    </p>
+    <div class="meta">
+      <span><i class="dot"></i> Non-custodial by design</span>
+      <span><i class="dot"></i> Deterministic kill-switch</span>
+      <span><i class="dot"></i> Python intelligence / Rust governance boundary</span>
+      <span><i class="dot"></i> Istanbul, Türkiye</span>
+    </div>
+    <p style="margin:22px 0 0">
+      <a href="zvakthor-one-pager.pdf" style="display:inline-block;border:1px solid rgba(77,163,255,.55);background:rgba(77,163,255,.10);border-radius:8px;padding:10px 16px;font-size:14.5px;font-weight:600">Download the one-page summary (PDF)</a>
+    </p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <h2>The Problem</h2>
+    <div class="grid g2">
+      <div>
+        <h3>Most agentic AI stops at a working demo.</h3>
+        <p>
+          The hard part is everything after it: execution governance, observability, and failure handling.
+          A system that can generate a signal is not the same as a system that can be trusted with capital.
+        </p>
+      </div>
+      <div>
+        <h3>The layer that decides outcomes is not the model.</h3>
+        <p>
+          Production evidence collected in our research program indicates that agent behaviour is driven by
+          <em>interface and execution design</em>, not by model reasoning quality alone. This is the
+          Operating-Layer Dominance Hypothesis — the starting point for the architecture below.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Architecture</h2>
+    <div class="flow">
+      <div class="step">
+        <div class="tag">Layer 1</div>
+        <h3>Discovery</h3>
+        <p>Signal generation and candidate search, structured so the search objective does not converge on the same crowded alpha as every other discovery layer.</p>
+      </div>
+      <div class="step">
+        <div class="tag">Layer 2</div>
+        <h3>Reasoning</h3>
+        <p>Specialist agents analyse markets independently and produce decisions with their supporting context and constraints.</p>
+      </div>
+      <div class="step core">
+        <div class="tag">Layer 3</div>
+        <h3>Execution Control</h3>
+        <p>An isolated Rust core validates every decision for risk and execution eligibility. Nothing reaches the market unvalidated. The kill-switch is deterministic.</p>
+      </div>
+    </div>
+    <p style="margin-top:18px;font-size:14.5px;color:#9aa7b8">
+      The split is deliberate: a component that can influence a decision is not the component that authorises it.
+    </p>
+  </section>
+
+  <section>
+    <h2>What the architecture enforces</h2>
+    <ul class="checks">
+      <li><strong>No unvalidated order.</strong> Every decision passes risk and eligibility validation in an isolated control core before it can reach the market.</li>
+      <li><strong>Full decision lineage.</strong> Every decision — accepted or rejected — is recorded and replayable. Accepted and rejected paths are both first-class.</li>
+      <li><strong>Bounded authority.</strong> Authority carries explicit scope, validity, and revocation semantics, and is revoked at the authorisation boundary <em>before</em> subsequent execution.</li>
+      <li><strong>Reproducibility.</strong> A decision is reproducible only from a versioned execution context — software, policy, model, configuration, and dependency versions are part of the decision state, not documentation.</li>
+      <li><strong>Failure containment.</strong> A failed transition must not expose a valid-looking partial state, and committed state must survive process, node, or service failure.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Custody and control</h2>
+    <div class="claim">
+      <strong>Non-custodial by design.</strong> The software is licensed and run by clients on their own broker accounts.
+      Capital stays in the client's name, and the system never takes discretionary control.
+    </div>
+    <p style="margin-top:16px">
+      This is an architectural constraint rather than a contractual promise: because the control core validates execution
+      eligibility instead of holding keys or balances, the platform does not need custody to operate.
+    </p>
+  </section>
+
+  <section>
+    <h2>Status</h2>
+    <div class="grid g3">
+      <div class="card">
+        <div class="num">Validated</div>
+        <h3>Core architecture &amp; first agent group</h3>
+        <p>Validated end to end in a demo environment, including the validation and replay path.</p>
+      </div>
+      <div class="card">
+        <div class="num">Next phase</div>
+        <h3>Full agent activation &amp; live-account validation</h3>
+        <p>Remaining agents activate as their data infrastructure is funded.</p>
+      </div>
+      <div class="card">
+        <div class="num">Adjacent</div>
+        <h3>IMPERION</h3>
+        <p>Applies the same governance discipline to automating AI system architecture decisions.</p>
+      </div>
+    </div>
+    <p class="note">
+      We describe the platform at the stage it is actually at. No live performance figures are published here, and none should be inferred.
+    </p>
+  </section>
+
+  <section>
+    <h2>Research program</h2>
+    <p>Four peer-indexed working papers on SSRN specify the evaluation, deployment, and architecture claims behind the platform.</p>
+    <table class="papers">
+      <tr>
+        <td>Paper 1</td>
+        <td>
+          <span class="t">The Operating-Layer Dominance Hypothesis: Why Agentic Trading Alpha Is an Interface Problem, Not a Model Problem</span>
+          <a href="https://ssrn.com/abstract=7472064">ssrn.com/abstract=7472064</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Paper 2</td>
+        <td>
+          <span class="t">From Backtest to Deployment: A Staged-Capital Protocol for Evaluating Agentic Trading Systems</span>
+          <a href="https://ssrn.com/abstract=7475338">ssrn.com/abstract=7475338</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Paper 3</td>
+        <td>
+          <span class="t">A Three-Layer Reference Architecture for Deterministic Control in Agentic Trading Systems</span>
+          <a href="https://ssrn.com/abstract=7488978">ssrn.com/abstract=7488978</a>
+        </td>
+      </tr>
+      <tr>
+        <td>Paper 4</td>
+        <td>
+          <span class="t">Why Discovery Layers Guarantee Crowded Alpha: A Design Case for Quality-Diversity Search in Agentic Trading Systems</span>
+          <a href="https://ssrn.com/abstract=7488920">ssrn.com/abstract=7488920</a>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>Verifiable identity</h2>
+    <div class="ids">
+      <div class="id">
+        <div class="lbl">ORCID iD</div>
+        <div class="val"><code>0009-0009-4656-5983</code><br>
+        <a href="https://orcid.org/0009-0009-4656-5983">orcid.org/0009-0009-4656-5983</a></div>
+      </div>
+      <div class="id">
+        <div class="lbl">SSRN author page</div>
+        <div class="val"><a href="https://ssrn.com/author=13197688">ssrn.com/author=13197688</a></div>
+      </div>
+      <div class="id">
+        <div class="lbl">Amazon author page</div>
+        <div class="val"><a href="https://www.amazon.com/stores/author/B0GQ66415M">amazon.com/stores/author/B0GQ66415M</a><br>Seven technical books on AI, blockchain, and quantitative trading</div>
+      </div>
+      <div class="id">
+        <div class="lbl">Open-source reference</div>
+        <div class="val"><a href="https://github.com/hadisoufi20/NexusQuant">Nexus Quant — agentic reasoning and deterministic state-machine patterns</a></div>
+      </div>
+    </div>
+    <p class="note">
+      ORCID is the authoritative record of authorship and affiliation used in this page's research section.
+    </p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <strong style="color:#e8edf4">ZVAKTHOR</strong> — algorithmic execution infrastructure for global financial markets.
+      </div>
+      <div>
+        Contact: <a href="https://www.linkedin.com/in/hadi-soufi-463170266">LinkedIn — Hadi Soufi</a>
+        &nbsp;·&nbsp; <a href="zvakthor-one-pager.pdf">One-page summary (PDF)</a>
+      </div>
+    </div>
+    <p class="note">
+      This page describes system architecture and status. It is not an offer of securities, an investment recommendation,
+      or a performance claim. Trading systems carry risk of loss.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
