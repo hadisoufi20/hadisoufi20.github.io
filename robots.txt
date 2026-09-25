@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hadisoufi20.github.io/sitemap.xml
+Sitemap: https://hadisoufi.com/sitemap.xml

@@ -1,307 +1,129 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hadi Soufi — AI Systems Architect · Deterministic Control for Autonomous Systems</title>
-<meta name="description" content="Hadi Soufi is an AI systems architect and independent researcher working on deterministic control for autonomous and multi-agent systems. Founder of ZVAKTHOR. Four SSRN working papers and seven technical books.">
-<meta property="og:site_name" content="Hadi Soufi">
-<meta property="og:title" content="Hadi Soufi — AI Systems Architect">
-<meta property="og:description" content="Deterministic control for autonomous and multi-agent systems. Founder of ZVAKTHOR. Four SSRN working papers, seven technical books, and public reference implementations.">
-<meta property="og:url" content="https://hadisoufi20.github.io/">
-<meta property="og:image" content="https://hadisoufi20.github.io/og-card.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Hadi Soufi — AI Systems Architect">
-<meta name="twitter:description" content="Deterministic control for autonomous and multi-agent systems. Founder of ZVAKTHOR.">
-<meta name="twitter:image" content="https://hadisoufi20.github.io/og-card.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230a0d12'/%3E%3Cpath d='M18 18h28L30 34h14L18 46l10-16z' fill='%234da3ff'/%3E%3C/svg%3E">
-<meta name="theme-color" content="#0a0d12">
-<link rel="canonical" href="https://hadisoufi20.github.io/">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hadi Soufi — AI Systems Architect</title>
+<meta name="description" content="Hadi Soufi is an AI systems architect and independent researcher working on deterministic control for autonomous and multi-agent systems. Founder of ZVAKTHOR.">
+<link rel="canonical" href="https://hadisoufi.com/">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="author" content="Hadi Soufi">
-<link rel="me" href="https://orcid.org/0009-0009-4656-5983">
-<link rel="me" href="https://github.com/hadisoufi20">
-<link rel="me" href="https://www.linkedin.com/in/hadi-soufi-463170266">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[
-{"@type":"Person","@id":"https://hadisoufi20.github.io/#person","name":"Hadi Soufi","jobTitle":"AI Systems Architect","description":"AI systems architect and independent researcher working on deterministic control architectures for autonomous and multi-agent systems.","url":"https://hadisoufi20.github.io/","email":"mailto:hadisoufi20@gmail.com","image":"https://hadisoufi20.github.io/assets/profile-photo.png","address":{"@type":"PostalAddress","addressLocality":"Istanbul","addressCountry":"TR"},"identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"0009-0009-4656-5983"},"knowsAbout":["Agentic AI Trading Systems","Multi-Agent Systems","AI Systems Architecture","Quantitative Finance","Deterministic execution control"],"founder":{"@id":"https://hadisoufi20.github.io/zvakthor/#zvakthor"},"sameAs":["https://orcid.org/0009-0009-4656-5983","https://ssrn.com/author=13197688","https://www.linkedin.com/in/hadi-soufi-463170266","https://github.com/hadisoufi20","https://www.amazon.com/stores/author/B0GQ66415M"]},
-{"@type":"Organization","@id":"https://hadisoufi20.github.io/zvakthor/#zvakthor","name":"ZVAKTHOR","description":"Algorithmic execution platform that separates intelligence from control: specialist agents analyse markets while an isolated Rust core validates every decision for risk and execution eligibility before any order reaches the market.","url":"https://hadisoufi20.github.io/zvakthor/","founder":{"@id":"https://hadisoufi20.github.io/#person"}},
-{"@type":"ScholarlyArticle","name":"The Operating-Layer Dominance Hypothesis: Why Agentic Trading Alpha Is an Interface Problem, Not a Model Problem","author":{"@id":"https://hadisoufi20.github.io/#person"},"publisher":"SSRN","datePublished":"2026","url":"https://ssrn.com/abstract=7472064"},
-{"@type":"ScholarlyArticle","name":"From Backtest to Deployment: A Staged-Capital Protocol for Evaluating Agentic Trading Systems","author":{"@id":"https://hadisoufi20.github.io/#person"},"publisher":"SSRN","datePublished":"2026","url":"https://ssrn.com/abstract=7475338"},
-{"@type":"ScholarlyArticle","name":"A Three-Layer Reference Architecture for Deterministic Control in Agentic Trading Systems","author":{"@id":"https://hadisoufi20.github.io/#person"},"publisher":"SSRN","datePublished":"2026","url":"https://ssrn.com/abstract=7488978"},
-{"@type":"ScholarlyArticle","name":"Why Discovery Layers Guarantee Crowded Alpha: A Design Case for Quality-Diversity Search in Agentic Trading Systems","author":{"@id":"https://hadisoufi20.github.io/#person"},"publisher":"SSRN","datePublished":"2026","url":"https://ssrn.com/abstract=7488920"}
-]}</script>
-<style>
-  :root{
-    --bg:#0a0d12;--panel:#11161d;--panel2:#151b24;--line:#232c38;
-    --ink:#e8edf4;--muted:#9aa7b8;--accent:#4da3ff;--accent2:#31d0aa;--maxw:960px;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
-  body{background:var(--bg);color:var(--ink);
-    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
-  a{color:var(--accent);text-decoration:none}
-  a:hover{text-decoration:underline}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-
-  nav.top{border-bottom:1px solid var(--line)}
-  nav.top .wrap{display:flex;justify-content:space-between;align-items:center;height:56px;font-size:14px}
-  nav.top .name{color:var(--ink);font-weight:650;letter-spacing:-.01em}
-  nav.top ul{list-style:none;display:flex;gap:22px;margin:0;padding:0}
-  nav.top ul a{color:var(--muted)}
-  nav.top ul a:hover{color:var(--ink);text-decoration:none}
-
-  header.hero{padding:60px 0 48px;border-bottom:1px solid var(--line);
-    background:radial-gradient(900px 340px at 80% -120px, rgba(77,163,255,.14), transparent 70%)}
-  .hero-grid{display:flex;gap:36px;align-items:center}
-  .photo{flex:0 0 132px;width:132px;height:132px;border-radius:50%;border:1px solid var(--line);object-fit:cover}
-  .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin:0 0 10px}
-  h1{font-size:42px;line-height:1.1;margin:0 0 14px;letter-spacing:-.025em;font-weight:750}
-  .lede{font-size:18.5px;color:#c7d2e0;margin:0 0 18px;max-width:640px}
-  .meta{font-size:13.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-  .chip{font-size:12.5px;color:#c7d2e0;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:5px 12px}
-
-  section{padding:44px 0;border-bottom:1px solid var(--line)}
-  h2{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 20px;font-weight:700}
-  h3{font-size:18px;margin:0 0 6px;letter-spacing:-.01em;color:#fff}
-  p{margin:0 0 14px;color:#c2cddb}
-  .muted{color:var(--muted);font-size:14.5px}
-
-  .feature{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px}
-  .card .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 8px}
-  .card p{font-size:14.5px;color:#aab7c7;margin:0 0 10px}
-  .card p:last-child{margin:0}
-  .btn{display:inline-block;border:1px solid rgba(77,163,255,.55);background:rgba(77,163,255,.10);border-radius:8px;padding:9px 15px;font-size:14px;font-weight:600;margin:6px 10px 0 0}
-  .btn:hover{text-decoration:none;background:rgba(77,163,255,.18)}
-
-  ol.pubs{list-style:none;margin:0;padding:0;counter-reset:p}
-  ol.pubs li{padding:16px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:56px 1fr;gap:6px 12px}
-  ol.pubs li:last-child{border-bottom:none}
-  ol.pubs .n{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.08em;padding-top:3px}
-  ol.pubs .t{color:#eef2f7;font-weight:600;display:block;margin-bottom:3px;line-height:1.45}
-  ol.pubs .c{font-size:14px;color:var(--muted)}
-
-  .books{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
-  .book{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
-  .book .t{color:#eef2f7;font-weight:600;line-height:1.4;display:block;margin-bottom:4px}
-  .book .c{font-size:13.5px;color:var(--muted)}
-
-  .repos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-  .repo{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px}
-  .repo code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13.5px;color:var(--accent)}
-  .repo p{font-size:14px;color:#aab7c7;margin:8px 0 0}
-  .repo .tests{font-size:12px;color:var(--accent2);margin-top:10px;font-weight:600}
-
-  dl.ids{display:grid;grid-template-columns:170px 1fr;gap:10px 18px;margin:0;font-size:15px}
-  dl.ids dt{color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding-top:3px}
-  dl.ids dd{margin:0;color:#dbe4ee;word-break:break-word}
-
-  footer{padding:30px 0 50px;color:var(--muted);font-size:13px}
-
-  @media (max-width:760px){
-    h1{font-size:32px}
-    .hero-grid{flex-direction:column;align-items:flex-start;gap:20px}
-    .photo{width:104px;height:104px;flex-basis:104px}
-    .feature,.repos{grid-template-columns:1fr}
-    dl.ids{grid-template-columns:1fr;gap:2px}
-    dl.ids dd{margin-bottom:12px}
-    nav.top ul{display:none}
-  }
-  @media print{
-    body{background:#fff;color:#111}
-    nav.top{display:none}
-    header.hero{background:none}
-    .card,.book,.repo,.chip{background:#fff;border-color:#ccc}
-    h1,h3,ol.pubs .t,.book .t{color:#111}
-    p,.lede,dl.ids dd{color:#222}
-  }
-</style>
+<meta name="theme-color" content="#0A1020">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Hadi Soufi">
+<meta property="og:title" content="Hadi Soufi — AI Systems Architect">
+<meta property="og:description" content="Hadi Soufi is an AI systems architect and independent researcher working on deterministic control for autonomous and multi-agent systems. Founder of ZVAKTHOR.">
+<meta property="og:url" content="https://hadisoufi.com/">
+<meta property="og:image" content="https://hadisoufi.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hadi Soufi — AI Systems Architect">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hadi Soufi — AI Systems Architect">
+<meta name="twitter:description" content="Hadi Soufi is an AI systems architect and independent researcher working on deterministic control for autonomous and multi-agent systems. Founder of ZVAKTHOR.">
+<meta name="twitter:image" content="https://hadisoufi.com/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/newsreader-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css">
+<link rel="me" href="https://orcid.org/0009-0009-4656-5983"><link rel="me" href="https://github.com/hadisoufi20"><link rel="me" href="https://www.linkedin.com/in/hadi-soufi-463170266">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://hadisoufi.com/#website","url":"https://hadisoufi.com/","name":"Hadi Soufi","inLanguage":"en","publisher":{"@id":"https://hadisoufi.com/#person"}},{"@type":"Person","@id":"https://hadisoufi.com/#person","name":"Hadi Soufi","jobTitle":"AI Systems Architect","description":"AI systems architect and independent researcher working on deterministic control for autonomous and multi-agent systems.","url":"https://hadisoufi.com/","email":"mailto:hadi@hadisoufi.com","image":"https://hadisoufi.com/img/hadi-soufi.jpg","address":{"@type":"PostalAddress","addressLocality":"Istanbul","addressCountry":"TR"},"identifier":{"@type":"PropertyValue","propertyID":"ORCID","value":"0009-0009-4656-5983"},"knowsAbout":["Agentic AI trading systems","Multi-agent systems","AI systems architecture","Quantitative finance","Deterministic execution control"],"founder":{"@id":"https://hadisoufi.com/zvakthor/#org"},"sameAs":["https://orcid.org/0009-0009-4656-5983","https://ssrn.com/author=13197688","https://www.linkedin.com/in/hadi-soufi-463170266","https://github.com/hadisoufi20","https://www.amazon.com/stores/author/B0GQ66415M"]},{"@type":"Organization","@id":"https://hadisoufi.com/zvakthor/#org","name":"ZVAKTHOR","url":"https://hadisoufi.com/zvakthor/","description":"Algorithmic execution platform that separates intelligence from control: specialist agents analyse markets; an isolated Rust core validates every decision before any order reaches the market.","founder":{"@id":"https://hadisoufi.com/#person"}}]}</script>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top"><div class="wrap">
+<a class="brand" href="/"><b>Hadi Soufi</b><small>AI Systems Architect</small></a>
+<nav aria-label="Primary"><ul class="nav"><li><a href="/about/">About</a></li><li><a href="/research/">Research</a></li><li><a href="/zvakthor/">ZVAKTHOR</a></li><li><a href="/books/">Books</a></li></ul></nav>
+</div></header>
+<main id="main">
 
-<nav class="top">
-  <div class="wrap">
-    <a class="name" href="./">Hadi Soufi</a>
-    <ul>
-      <li><a href="#research">Research</a></li>
-      <li><a href="#books">Books</a></li>
-      <li><a href="#code">Code</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><a href="zvakthor/">ZVAKTHOR</a></li>
-    </ul>
-  </div>
-</nav>
+<div class="hero"><div class="wrap">
+<div class="hero-grid">
+<div>
+<hr class="rule">
+<p class="kicker">AI Systems Architect · Independent Researcher</p>
+<h1 class="display">Hadi Soufi</h1>
+<p class="sub">Deterministic control for<br>autonomous systems</p>
+<p class="lede">I design deterministic control layers for autonomous and multi-agent systems — the layer that decides whether a machine’s decision is allowed to reach execution. Founder of ZVAKTHOR.</p>
+<div class="ctas"><a class="btn gold" href="/research/">View research</a><a class="btn" href="/zvakthor/">ZVAKTHOR architecture</a></div>
+</div>
+<figure class="portrait">
+<picture><source srcset="/img/hadi-soufi.webp" type="image/webp"><img src="/img/hadi-soufi.jpg" width="300" height="300" alt="Portrait of Hadi Soufi" fetchpriority="high"></picture>
+<figcaption>Istanbul, Türkiye</figcaption>
+</figure>
+</div>
+<div class="focus">
+<div><span>01</span><b>Agentic AI Trading Systems</b></div>
+<div><span>02</span><b>Multi-Agent Systems</b></div>
+<div><span>03</span><b>AI Systems Architecture</b></div>
+<div><span>04</span><b>Quantitative Finance</b></div>
+</div>
+</div></div>
 
-<header class="hero">
-  <div class="wrap hero-grid">
-    <img class="photo" src="assets/profile-photo.png" alt="Hadi Soufi" width="132" height="132">
-    <div>
-      <p class="kicker">AI Systems Architect &nbsp;·&nbsp; Independent Researcher</p>
-      <h1>Hadi Soufi</h1>
-      <p class="lede">
-        I design deterministic control layers for autonomous and multi-agent systems — the layer that decides
-        whether a machine's decision is allowed to reach production. Founder of <a href="zvakthor/">ZVAKTHOR</a>.
-      </p>
-      <div class="meta">
-        <span>Istanbul, Türkiye</span>
-        <span><a href="mailto:hadisoufi20@gmail.com">hadisoufi20@gmail.com</a></span>
-        <span>ORCID <a href="https://orcid.org/0009-0009-4656-5983">0009-0009-4656-5983</a></span>
-      </div>
-      <div class="chips">
-        <span class="chip">Agentic AI Trading Systems</span>
-        <span class="chip">Multi-Agent Systems</span>
-        <span class="chip">AI Systems Architecture</span>
-        <span class="chip">Quantitative Finance</span>
-      </div>
-    </div>
-  </div>
-</header>
+<section id="profile"><div class="wrap split">
+<div><p class="kicker">Profile</p><h2 class="h2">Engineering authority, not just intelligence.</h2></div>
+<div>
+<p>Twenty years of building software systems — the last two and a half dedicated to deterministic control for autonomous agents. Most agentic AI stops at a working demo. The hard part is everything after it: execution governance, observability, and failure handling. That is the part I work on.</p>
+<p>My research asks where authority over an autonomous decision should live, how it is bounded and revoked, and how every decision — accepted or rejected — can be recorded and replayed. The component that can influence a decision should not be the component that authorises it.</p>
+<dl class="facts"><dt>Education</dt><dd>M.Sc. Software Engineering</dd><dt>Based in</dt><dd>Istanbul, Türkiye</dd><dt>ORCID</dt><dd><a href="https://orcid.org/0009-0009-4656-5983">0009-0009-4656-5983</a></dd></dl>
+<p style="margin-top:28px"><a class="arrow" href="/about/">Full profile</a></p>
+</div>
+</div></section>
 
-<main class="wrap">
+<section id="zvakthor"><div class="wrap">
+<div class="head-row"><div><p class="kicker">Current work · ZVAKTHOR</p><h2 class="h2">Intelligence proposes.<br>Control disposes.</h2></div><a class="arrow" href="/zvakthor/">Architecture overview</a></div>
+<p class="lede">An algorithmic execution platform for global financial markets. Specialist agents analyse markets independently; an isolated Rust core validates every decision for risk and execution eligibility before any order reaches the market. Every decision — accepted or rejected — is recorded and replayable.</p>
+<div class="arch" role="img" aria-label="Three-layer architecture: Discovery, Reasoning, and Execution Control, with an enforced control boundary before execution">
+<div class="layer"><div class="n">01</div><h3>Discovery</h3><p>Signal generation and candidate search.</p></div>
+<div class="link" aria-hidden="true"></div>
+<div class="layer"><div class="n">02</div><h3>Reasoning</h3><p>Independent specialist agents propose decisions.</p></div>
+<div class="link gate" aria-hidden="true"></div>
+<div class="layer core"><div class="n">03</div><h3>Execution Control</h3><p>Isolated Rust core validates risk and eligibility. Deterministic stop.</p></div>
+<div class="boundary" aria-hidden="true" style="left:calc((100% - 112px)*2/3 + 84px)"></div>
+</div>
+<p class="boundary-label">Control boundary — nothing crosses unvalidated</p>
+<div class="status"><p class="kicker">Status</p><p>Core architecture and the first agent group validated end to end in a demo environment. Next phase: full agent activation and live-account validation.</p></div>
+</div></section>
 
-  <section id="about">
-    <h2>About</h2>
-    <div class="feature">
-      <div>
-        <p>
-          Twenty years of building software systems — the last two and a half dedicated to deterministic control
-          for autonomous agents. Most agentic AI stops at a working demo. The hard part is everything after it:
-          execution governance, observability, and failure handling. That is the part I work on.
-        </p>
-        <p>
-          My research asks where authority over an autonomous decision should live, how it is bounded and revoked,
-          and how every decision — accepted or rejected — can be recorded and replayed. The component that can
-          influence a decision should not be the component that authorises it.
-        </p>
-        <p class="muted">M.Sc. Software Engineering.</p>
-      </div>
-      <div class="card">
-        <div class="lbl">Current work</div>
-        <h3>ZVAKTHOR</h3>
-        <p>
-          An algorithmic execution platform for global financial markets. Specialist agents analyse markets
-          independently; an isolated Rust core validates every decision for risk and execution eligibility before
-          any order reaches the market.
-        </p>
-        <p>
-          <b style="color:#dbe4ee">Status:</b> core architecture and the first agent group validated end to end in a
-          demo environment. Next phase: full agent activation and live-account validation.
-        </p>
-        <a class="btn" href="zvakthor/">Architecture overview</a>
-        <a class="btn" href="zvakthor-one-pager.pdf">One-pager (PDF)</a>
-      </div>
-    </div>
-  </section>
+<section id="principle"><div class="wrap">
+<p class="kicker">Built on the same principle</p>
+<p class="principle">Three systems, one principle: <em>models propose or explain — deterministic engines decide.</em></p>
+<div class="cards">
+<article class="card"><p class="kicker">Decision intelligence for AI architecture</p><h3>IMPERION</h3>
+<p>Turns AI project planning into evidence-based, traceable decision packages covering architecture options, cost, risk, and mapping against governance frameworks. Several models are compared; the output is a documented decision, not a chat answer.</p>
+<p class="st"><b>Status</b>Deployed; agent behaviour tested over several months. Not yet validated under production load or with real users.</p></article>
+<article class="card"><p class="kicker">Investment decision intelligence</p><h3>ZIFK</h3>
+<p>Deterministic engines score risk, economic regime and allocation; AI explains the decision and never makes it. No broker connection, no custody, no execution. Every decision is recorded in an auditable ledger.</p>
+<p class="st"><b>Status</b>Deployed; agent behaviour tested over several months. Not yet validated under production load or with real users.</p></article>
+</div>
+</div></section>
 
-  <section id="research">
-    <h2>Research</h2>
-    <p class="muted">Working papers on SSRN, 2026. Sole author.</p>
-    <ol class="pubs">
-      <li>
-        <span class="n">[1]</span>
-        <div>
-          <a class="t" href="https://ssrn.com/abstract=7472064">The Operating-Layer Dominance Hypothesis: Why Agentic Trading Alpha Is an Interface Problem, Not a Model Problem</a>
-          <span class="c">H. Soufi · SSRN Working Paper, 2026 · <a href="https://ssrn.com/abstract=7472064">ssrn.com/abstract=7472064</a></span>
-        </div>
-      </li>
-      <li>
-        <span class="n">[2]</span>
-        <div>
-          <a class="t" href="https://ssrn.com/abstract=7475338">From Backtest to Deployment: A Staged-Capital Protocol for Evaluating Agentic Trading Systems</a>
-          <span class="c">H. Soufi · SSRN Working Paper, 2026 · <a href="https://ssrn.com/abstract=7475338">ssrn.com/abstract=7475338</a></span>
-        </div>
-      </li>
-      <li>
-        <span class="n">[3]</span>
-        <div>
-          <a class="t" href="https://ssrn.com/abstract=7488978">A Three-Layer Reference Architecture for Deterministic Control in Agentic Trading Systems</a>
-          <span class="c">H. Soufi · SSRN Working Paper, 2026 · <a href="https://ssrn.com/abstract=7488978">ssrn.com/abstract=7488978</a> · Reference implementation: <a href="https://github.com/hadisoufi20/deterministic-control-reference">deterministic-control-reference</a></span>
-        </div>
-      </li>
-      <li>
-        <span class="n">[4]</span>
-        <div>
-          <a class="t" href="https://ssrn.com/abstract=7488920">Why Discovery Layers Guarantee Crowded Alpha: A Design Case for Quality-Diversity Search in Agentic Trading Systems</a>
-          <span class="c">H. Soufi · SSRN Working Paper, 2026 · <a href="https://ssrn.com/abstract=7488920">ssrn.com/abstract=7488920</a></span>
-        </div>
-      </li>
-    </ol>
-  </section>
+<section id="research"><div class="wrap">
+<div class="head-row"><div><p class="kicker">Research · SSRN 2026</p><h2 class="h2">Four working papers.</h2></div><a class="arrow" href="/research/">All research</a></div>
+<ol class="papers"><li><a href="/research/the-operating-layer-dominance-hypothesis/"><span class="n">01</span><span><span class="t">The Operating-Layer Dominance Hypothesis: Why Agentic Trading Alpha Is an Interface Problem, Not a Model Problem</span><span class="m">H. Soufi · SSRN Working Paper · 2026</span></span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/research/from-backtest-to-deployment/"><span class="n">02</span><span><span class="t">From Backtest to Deployment: A Staged-Capital Protocol for Evaluating Agentic Trading Systems</span><span class="m">H. Soufi · SSRN Working Paper · 2026</span></span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/research/three-layer-reference-architecture/"><span class="n">03</span><span><span class="t">A Three-Layer Reference Architecture for Deterministic Control in Agentic Trading Systems</span><span class="m">H. Soufi · SSRN Working Paper · 2026</span></span><span class="go" aria-hidden="true">→</span></a></li><li><a href="/research/why-discovery-layers-guarantee-crowded-alpha/"><span class="n">04</span><span><span class="t">Why Discovery Layers Guarantee Crowded Alpha: A Design Case for Quality-Diversity Search in Agentic Trading Systems</span><span class="m">H. Soufi · SSRN Working Paper · 2026</span></span><span class="go" aria-hidden="true">→</span></a></li></ol>
+</div></section>
 
-  <section id="books">
-    <h2>Books</h2>
-    <p class="muted">Seven technical books on AI, blockchain, and quantitative trading. <a href="https://www.amazon.com/stores/author/B0GQ66415M">Amazon author page</a></p>
-    <div class="books">
-      <div class="book">
-        <a class="t" href="https://www.amazon.com/dp/B0H1N456HJ">The Proprietary Agent</a>
-        <span class="c">Kindle edition</span>
-      </div>
-      <div class="book">
-        <a class="t" href="https://www.amazon.com/dp/B0H1N1NJ5S">The Velocity Paradox</a>
-        <span class="c">Kindle edition</span>
-      </div>
-      <div class="book">
-        <a class="t" href="https://www.amazon.com/dp/B0GPRGX2BN">The Market Architect</a>
-        <span class="c">The Systemic Logic of Global Finance and AI Decision-Engineering · Kindle edition</span>
-      </div>
-      <div class="book">
-        <a class="t" href="https://www.amazon.com/dp/B0GPR8YQS4">The Trading Copilot</a>
-        <span class="c">Engineering the Human-AI Edge without Coding · Kindle edition</span>
-      </div>
-      <div class="book">
-        <span class="t">The Blockchain Blueprint</span>
-        <span class="c">Three-volume series · <a href="https://www.amazon.com/dp/B0GPQYC3H5">Vol. 1: The Genesis</a> · <a href="https://www.amazon.com/dp/B0GPR99RY3">Vol. 2: The Infrastructure</a> · <a href="https://www.amazon.com/dp/B0GPR9X7RS">Vol. 3: The Frontier</a></span>
-      </div>
-    </div>
-  </section>
+<section id="code"><div class="wrap">
+<div class="head-row"><div><p class="kicker">Open source</p><h2 class="h2">Reference implementations.</h2></div><a class="ext" href="https://github.com/hadisoufi20">GitHub</a></div>
+<div class="repos"><div class="repo"><a href="https://github.com/hadisoufi20/deterministic-control-reference" class="ext"><code>deterministic-control-reference</code></a><p>The three-layer control boundary from Paper 03: revocable authority, an append-only decision journal, deterministic replay.</p><div class="t">42 tests</div></div><div class="repo"><a href="https://github.com/hadisoufi20/reliable-ai-workflow-engine" class="ext"><code>reliable-ai-workflow-engine</code></a><p>Rule-based autonomous workflow with an enforced lifecycle and an audit trail.</p><div class="t">11 tests</div></div><div class="repo"><a href="https://github.com/hadisoufi20/NexusQuant" class="ext"><code>NexusQuant</code></a><p>Agentic market-structure analysis with deterministic state-machine patterns.</p><div class="t">9 tests</div></div></div>
+</div></section>
 
-  <section id="code">
-    <h2>Open-source reference implementations</h2>
-    <div class="repos">
-      <div class="repo">
-        <a href="https://github.com/hadisoufi20/deterministic-control-reference"><code>deterministic-control-reference</code></a>
-        <p>The three-layer control boundary from Paper 3: revocable authority, an append-only decision journal, and deterministic replay.</p>
-        <div class="tests">42 tests</div>
-      </div>
-      <div class="repo">
-        <a href="https://github.com/hadisoufi20/reliable-ai-workflow-engine"><code>reliable-ai-workflow-engine</code></a>
-        <p>Rule-based autonomous workflow with an enforced lifecycle and an audit trail.</p>
-        <div class="tests">11 tests</div>
-      </div>
-      <div class="repo">
-        <a href="https://github.com/hadisoufi20/NexusQuant"><code>NexusQuant</code></a>
-        <p>Agentic market-structure analysis with LangGraph and deterministic state-machine patterns.</p>
-        <div class="tests">9 tests</div>
-      </div>
-    </div>
-  </section>
+<section id="books"><div class="wrap split">
+<div><p class="kicker">Books</p><h2 class="h2">Seven technical books.</h2><p class="lede" style="margin-top:24px">AI, blockchain, and quantitative trading.</p><p style="margin-top:28px"><a class="arrow" href="/books/">View the library</a></p></div>
+<div class="shelf"><a class="spine" style="--h:300px" href="https://www.amazon.com/dp/B0H1N456HJ" aria-label="The Proprietary Agent on Amazon"><span>The Proprietary Agent</span></a><a class="spine" style="--h:340px" href="https://www.amazon.com/dp/B0H1N1NJ5S" aria-label="The Velocity Paradox on Amazon"><span>The Velocity Paradox</span></a><a class="spine" style="--h:280px" href="https://www.amazon.com/dp/B0GPRGX2BN" aria-label="The Market Architect — The Systemic Logic of Global Finance and AI Decision-Engineering on Amazon"><span>The Market Architect</span></a><a class="spine" style="--h:300px" href="https://www.amazon.com/dp/B0GPR8YQS4" aria-label="The Trading Copilot — Engineering the Human-AI Edge without Coding on Amazon"><span>The Trading Copilot</span></a><a class="spine s" style="--h:340px" href="https://www.amazon.com/dp/B0GPQYC3H5" aria-label="The Blockchain Blueprint — Volume 1: The Genesis on Amazon"><span>Blockchain Blueprint · Vol. 1</span></a><a class="spine s" style="--h:280px" href="https://www.amazon.com/dp/B0GPR99RY3" aria-label="The Blockchain Blueprint — Volume 2: The Infrastructure on Amazon"><span>Blockchain Blueprint · Vol. 2</span></a><a class="spine s" style="--h:300px" href="https://www.amazon.com/dp/B0GPR9X7RS" aria-label="The Blockchain Blueprint — Volume 3: The Frontier on Amazon"><span>Blockchain Blueprint · Vol. 3</span></a></div>
+</div></section>
 
-  <section id="contact" style="border-bottom:none">
-    <h2>Contact &amp; identifiers</h2>
-    <dl class="ids">
-      <dt>Email</dt><dd><a href="mailto:hadisoufi20@gmail.com">hadisoufi20@gmail.com</a></dd>
-      <dt>ORCID</dt><dd><a href="https://orcid.org/0009-0009-4656-5983">0009-0009-4656-5983</a></dd>
-      <dt>SSRN</dt><dd><a href="https://ssrn.com/author=13197688">ssrn.com/author=13197688</a></dd>
-      <!-- SCHOLAR -->
-      <dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/hadi-soufi-463170266">in/hadi-soufi-463170266</a></dd>
-      <dt>GitHub</dt><dd><a href="https://github.com/hadisoufi20">github.com/hadisoufi20</a></dd>
-      <dt>Amazon</dt><dd><a href="https://www.amazon.com/stores/author/B0GQ66415M">Author page</a></dd>
-    </dl>
-    <p class="muted" style="margin-top:22px">Open to conversations with investors and partners in AI infrastructure and quantitative finance.</p>
-  </section>
+<section id="contact" class="contact"><div class="wrap">
+<p class="kicker">Contact</p>
+<h2 class="h2">For serious conversations.</h2>
+<p class="lede">Open to conversations with investors and partners in AI infrastructure and quantitative finance.</p>
+<a class="btn gold" href="mailto:hadi@hadisoufi.com">hadi@hadisoufi.com</a>
+<div class="links"><a class="ext" href="https://orcid.org/0009-0009-4656-5983">ORCID</a><a class="ext" href="https://ssrn.com/author=13197688">SSRN</a><a class="ext" href="https://www.linkedin.com/in/hadi-soufi-463170266">LinkedIn</a><a class="ext" href="https://github.com/hadisoufi20">GitHub</a></div>
+</div></section>
 
 </main>
-
-<footer>
-  <div class="wrap">
-    © Hadi Soufi · Istanbul, Türkiye · This site describes research and system architecture. It is not an offer of securities,
-    an investment recommendation, or a performance claim.
-  </div>
-</footer>
-
+<footer><div class="wrap">
+<p>© 2026 Hadi Soufi · Istanbul, Türkiye · <a href="mailto:hadi@hadisoufi.com">hadi@hadisoufi.com</a></p>
+<p>This site describes research and system architecture. It is not an offer of securities, an investment recommendation, or a performance claim.</p>
+</div></footer>
 </body>
 </html>
