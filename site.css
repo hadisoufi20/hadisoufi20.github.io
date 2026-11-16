@@ -25,7 +25,7 @@ a:hover{color:var(--gold)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:76px;gap:24px}
 .brand{display:flex;flex-direction:column;line-height:1.1}
 .brand b{font:400 22px/1.1 var(--serif);color:var(--ink);letter-spacing:-.01em}
-.brand small{font:600 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:7px}
+.brand small{font:600 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-top:7px}
 .nav{display:flex;gap:clamp(18px,3vw,34px);list-style:none;margin:0;padding:0}
 .nav a{font:400 12.5px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:12px 0;display:inline-block}
 .nav a:hover,.nav a[aria-current=page]{color:var(--ink)}
@@ -86,7 +86,7 @@ dl.facts dd{color:var(--ink);font-variant-numeric:tabular-nums}
 .link::after{content:"";position:absolute;right:0;width:9px;height:9px;border-top:1px solid var(--gold);border-right:1px solid var(--gold);transform:rotate(45deg)}
 .link.gate::before{background:none;border-top:1px dashed var(--gold)}
 .boundary{position:absolute;top:-28px;bottom:-28px;width:0;border-left:1px dashed rgba(201,168,106,.6)}
-.boundary-label{font:600 10.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:18px;text-align:right}
+.boundary-label{font:600 11px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:18px;text-align:right}
 .status{display:grid;grid-template-columns:150px 1fr;gap:24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:30px 0;margin-top:clamp(56px,7vw,80px)}
 .status p.kicker{margin:4px 0 0;color:var(--gold)}
 .status p{color:var(--ink);margin:0;max-width:760px}
@@ -132,6 +132,7 @@ ol.papers a:hover .t,ol.papers a:hover .go{color:var(--gold)}
 .booklist li{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line)}
 .booklist .t{font:400 clamp(22px,2.2vw,28px)/1.25 var(--serif);color:var(--ink)}
 .booklist .s{display:block;font-size:15px;color:var(--muted);margin-top:6px}
+.booklist .d{font-size:15.5px;color:var(--muted);margin:12px 0 0;max-width:720px}
 .booklist a.b{font:600 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}
 
 /* contact */
@@ -187,6 +188,8 @@ footer p{margin:0;max-width:640px}
   .repo,.repo+.repo{padding:26px 0;border-left:0}
   .shelf{justify-content:flex-start;height:280px;margin-top:40px}
   .head-row{flex-direction:column;align-items:flex-start}
+  .arrow,.head-row>a,.repo>a,dl.facts a,.contact .links a,.booklist a.b,.crumb a,footer a{display:inline-block;padding:10px 0;margin:-10px 0}
+  .contact .links a{margin:0}
 }
 @media (max-width:640px){
   .top .wrap{flex-direction:column;align-items:flex-start;justify-content:center;padding-top:16px;padding-bottom:6px;gap:6px}
